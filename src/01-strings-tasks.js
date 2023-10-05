@@ -241,17 +241,23 @@ function getRectangleString(width, height) {
  *   'Gb trg gb gur bgure fvqr!' => 'To get to the other side!'
  *   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
- *
+ * hello
+ * 1. найти индекс буквы h в строке str1
+ * str1.indexOf('h')
  */
-function encodeToRot13(/* str */) {
-  // const str1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  // const str2 = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+function encodeToRot13(str) {
+  const str1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ?!';
+  const str2 = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm ?!';
 
-  // let newStr = '';
+  let newStr = '';
 
-  // str[i].replace('')
-  throw new Error('Not implemented');
+  for (let i = 0; i < str.length; i += 1) {
+    newStr += str2[str1.indexOf(`${str[i]}`)];
+  }
+
+  return newStr;
 }
+
 
 /**
  * Returns true if the value is string; otherwise false.
@@ -266,9 +272,11 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  // return typeof value;
-  throw new Error('Not implemented');
+function isString(value) {
+  if (value instanceof String) {
+    return true;
+  }
+  return typeof value === 'string';
 }
 
 
@@ -296,8 +304,16 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const suit = '♣♦♥♠';
+  const index = 'A234567891JQK';
+  const ratio = suit.indexOf(value[value.length - 1]);
+  const position = index.indexOf(value[0]);
+  const step = 13;
+
+  const id = position + (step * ratio);
+
+  return id;
 }
 
 
