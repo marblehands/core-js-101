@@ -202,8 +202,28 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const leftUpAngle = '┌';
+  const horizontalBlock = '─';
+  const rightUpAngle = '┐\n';
+  const leftVerticalBlock = '│';
+  const rightVerticalBlock = '│\n';
+  const leftBottomAngle = '└';
+  const rightBottomAngle = '┘\n';
+  const emptiness = ' ';
+
+  const countHorizontal = width - 2;
+  const horizontal = horizontalBlock.repeat(countHorizontal);
+  const empty = emptiness.repeat(width - 2);
+
+  const top = leftUpAngle + horizontal + rightUpAngle;
+  const bottom = leftBottomAngle + horizontal + rightBottomAngle;
+  const middle = leftVerticalBlock + empty + rightVerticalBlock;
+  const middleCount = middle.repeat(height - 2);
+
+  const result = top + middleCount + bottom;
+
+  return result;
 }
 
 
@@ -224,6 +244,12 @@ function getRectangleString(/* width, height */) {
  *
  */
 function encodeToRot13(/* str */) {
+  // const str1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  // const str2 = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+
+  // let newStr = '';
+
+  // str[i].replace('')
   throw new Error('Not implemented');
 }
 
@@ -241,6 +267,7 @@ function encodeToRot13(/* str */) {
  *   isString(new String('test')) => true
  */
 function isString(/* value */) {
+  // return typeof value;
   throw new Error('Not implemented');
 }
 
