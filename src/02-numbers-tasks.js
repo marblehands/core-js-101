@@ -109,11 +109,12 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  // const number1 = x1 * x2 + x2 * y2;
-  // const number2 = Math.sqrt((x1 ** 2) + (y1 ** 2)) * Math.sqrt((x2 ** 2) + (y2 ** 2));
-  // return Math.acos(number1 / number2);
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const vectors = x1 * x2 + y1 * y2;
+  const module1 = Math.sqrt(x1 ** 2 + y1 ** 2);
+  const module2 = Math.sqrt(x2 ** 2 + y2 ** 2);
+  const cosAngle = vectors / (module1 * module2);
+  return Math.acos(cosAngle);
 }
 
 /**
@@ -128,8 +129,8 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  return value.toString()[value.toString().length - 1];
 }
 
 
@@ -232,7 +233,7 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  return typeof Number(value) === 'number' || def;
+  return Number(value) || def;
 }
 
 module.exports = {
