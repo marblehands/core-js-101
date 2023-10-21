@@ -282,9 +282,14 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  // return arr.flatMap((item, index) => {
-  // })
+function propagateItemsByPositionIndex(arr) {
+  let result = [];
+  if (arr.length === 1 || arr.length === 0) {
+    return arr;
+  }
+  const newArr = [...arr].splice(1);
+  result = arr.concat(propagateItemsByPositionIndex(newArr));
+  return result.sort();
 }
 
 
