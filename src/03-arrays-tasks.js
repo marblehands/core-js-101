@@ -588,12 +588,15 @@ function selectMany(arr, childrenSelector) {
  * @return {any} element from array
  *
  * @example
- *   [[1, 2], [3, 4], [5, 6]], [0,0]  => 1        (arr[0][0])
- *   ['one','two','three'], [2]       => 'three'  (arr[2])
- *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
+-
  */
-function getElementByIndexes(/* arr, indexes */) {
-  throw new Error('Not implemented');
+function getElementByIndexes(arr, indexes) {
+  if (indexes.length === 1) {
+    return arr[indexes[0]];
+  }
+  const firstIndex = indexes[0];
+  indexes.shift();
+  return getElementByIndexes(arr[firstIndex], indexes);
 }
 
 
